@@ -1,8 +1,21 @@
 ﻿var buttonShuffle = document.getElementById('shuffle'),
     buttonDraw = document.getElementById('draw'),
-    successes = 0,
-    total = 0,
+    successes,
+    total,
     cards = []; // get handles on the buttons and create a new array, as well as values for success and fail
+try{
+successes = localStorage.getItem('successes');
+total = localStorage.getItem('total');
+if(!(successes && total)){
+localStorage.setItem('successes', 0);
+localStorage.setItem('total', 0);
+successes = localStorage.getItem(0);
+total = localStorage.getItem(0);
+}
+}catch(e){
+successes = localStorage.getItem(0);
+total = localStorage.getItem(0);
+}
 
 // handle the click events
 buttonShuffle.addEventListener('click', shuffle);
@@ -88,6 +101,11 @@ function draw(){
     }else{ // otherwise, log it as a failure
         alert("Sorry, it was the " + chosenCard.value + " of " + chosenCard.suite + ".");
     }
+
+try{
+localStorage.setItem('successes', successes);
+localStorage.setItem('total', total);
+}catch(e){}
 
     alert("You are curently " + successes + " for " + total);
 }
