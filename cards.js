@@ -7,10 +7,12 @@
 try{
 successes = storage.getItem('successes');
 total = storage.getItem('total');
-if(!(successes && total)){
+if(!successes){
 storage.setItem('successes', 0);
-storage.setItem('total', 0);
 successes = storage.getItem(0);
+}
+if(!total){
+total.setItem('successes', 0);
 total = storage.getItem(0);
 }
 }catch(e){
