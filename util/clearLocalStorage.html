@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Clear Storage</title>
+</head>
+
+<body>
+<button type="button" id="ls">Clear Localstorage</button>
+
+<script>
+if(localStorage){
+document.getElementById('ls').addEventListener('click', function(){
+localStorage.clear();
+});
+}else{
+document.getElementById('ls').disabled = "disabled";
+
+var e = document.createElement('p');
+p.style.color = "red";
+p.innerHTML = "LocalStorage is not supported on this browser."
+document.body.appendChild(e);
+}
+</script>
+</body>
+</html>
